@@ -8,6 +8,7 @@ using LibCURL_jll
 PATH = ""
 LIBPATH = ""
 LIBPATH_env = "PATH"
+LIBPATH_default = ""
 
 # Relative path to `libgit2`
 const libgit2_splitpath = ["bin", "libgit2.dll"]

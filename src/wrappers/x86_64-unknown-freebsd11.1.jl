@@ -8,6 +8,7 @@ using LibCURL_jll
 PATH = ""
 LIBPATH = ""
 LIBPATH_env = "LD_LIBRARY_PATH"
+LIBPATH_default = ""
 
 # Relative path to `libgit2`
 const libgit2_splitpath = ["lib", "libgit2.so"]

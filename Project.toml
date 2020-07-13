@@ -1,11 +1,10 @@
 name = "LibGit2_jll"
 uuid = "e37daf67-58a4-590a-8e99-b0245dd2ffc5"
-version = "0.28.5+0"
+version = "1.0.0+0"
 
 [deps]
 MbedTLS_jll = "c8ffd9c3-330d-5841-b78e-0817d7145fa1"
 LibSSH2_jll = "29816b5a-b9ab-546f-933c-edad1886dfa8"
-LibCURL_jll = "deac9b47-8bc7-5906-a0fe-35ac56dc84c0"
 Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
 

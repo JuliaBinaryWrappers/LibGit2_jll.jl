@@ -3,7 +3,6 @@ export libgit2
 
 using MbedTLS_jll
 using LibSSH2_jll
-using LibCURL_jll
 ## Global variables
 PATH = ""
 LIBPATH = ""
@@ -11,7 +10,7 @@ LIBPATH_env = "DYLD_FALLBACK_LIBRARY_PATH"
 LIBPATH_default = "~/lib:/usr/local/lib:/lib:/usr/lib"
 
 # Relative path to `libgit2`
-const libgit2_splitpath = ["lib", "libgit2.0.28.5.dylib"]
+const libgit2_splitpath = ["lib", "libgit2.1.0.0.dylib"]
 
 # This will be filled out by __init__() for all products, as it must be done at runtime
 libgit2_path = ""
@@ -21,7 +20,7 @@ libgit2_path = ""
 libgit2_handle = C_NULL
 
 # This must be `const` so that we can use it with `ccall()`
-const libgit2 = "@rpath/libgit2.28.dylib"
+const libgit2 = "@rpath/libgit2.1.0.dylib"
 
 
 """
@@ -32,12 +31,10 @@ function __init__()
 
     # Initialize PATH and LIBPATH environment variable listings
     global PATH_list, LIBPATH_list
-    # We first need to add to LIBPATH_list the libraries provided by Julia
-    append!(LIBPATH_list, [joinpath(Sys.BINDIR, Base.LIBDIR, "julia"), joinpath(Sys.BINDIR, Base.LIBDIR)])
     # From the list of our dependencies, generate a tuple of all the PATH and LIBPATH lists,
     # then append them to our own.
-    foreach(p -> append!(PATH_list, p), (MbedTLS_jll.PATH_list, LibSSH2_jll.PATH_list, LibCURL_jll.PATH_list,))
-    foreach(p -> append!(LIBPATH_list, p), (MbedTLS_jll.LIBPATH_list, LibSSH2_jll.LIBPATH_list, LibCURL_jll.LIBPATH_list,))
+    foreach(p -> append!(PATH_list, p), (MbedTLS_jll.PATH_list, LibSSH2_jll.PATH_list,))
+    foreach(p -> append!(LIBPATH_list, p), (MbedTLS_jll.LIBPATH_list, LibSSH2_jll.LIBPATH_list,))
 
     global libgit2_path = normpath(joinpath(artifact_dir, libgit2_splitpath...))
 
@@ -50,12 +47,8 @@ function __init__()
     filter!(!isempty, unique!(PATH_list))
     filter!(!isempty, unique!(LIBPATH_list))
     global PATH = join(PATH_list, ':')
-    global LIBPATH = join(LIBPATH_list, ':')
+    global LIBPATH = join(vcat(LIBPATH_list, [joinpath(Sys.BINDIR, Base.LIBDIR, "julia"), joinpath(Sys.BINDIR, Base.LIBDIR)]), ':')
 
-    # Add each element of LIBPATH to our DL_LOAD_PATH (necessary on platforms
-    # that don't honor our "already opened" trick)
-    #for lp in LIBPATH_list
-    #    push!(DL_LOAD_PATH, lp)
-    #end
+    
 end  # __init__()
 

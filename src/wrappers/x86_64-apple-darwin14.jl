@@ -10,7 +10,7 @@ LIBPATH_env = "DYLD_FALLBACK_LIBRARY_PATH"
 LIBPATH_default = "~/lib:/usr/local/lib:/lib:/usr/lib"
 
 # Relative path to `libgit2`
-const libgit2_splitpath = ["lib", "libgit2.1.0.0.dylib"]
+const libgit2_splitpath = ["lib", "libgit2.1.0.1.dylib"]
 
 # This will be filled out by __init__() for all products, as it must be done at runtime
 libgit2_path = ""

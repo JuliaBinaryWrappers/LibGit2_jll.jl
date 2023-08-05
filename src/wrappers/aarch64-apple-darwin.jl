@@ -9,7 +9,7 @@ function __init__()
     JLLWrappers.@generate_init_header(MbedTLS_jll, LibSSH2_jll)
     JLLWrappers.@init_library_product(
         libgit2,
-        "lib/libgit2.1.6.1.dylib",
+        "lib/libgit2.1.6.4.dylib",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 

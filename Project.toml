@@ -1,6 +1,6 @@
 name = "LibGit2_jll"
 uuid = "e37daf67-58a4-590a-8e99-b0245dd2ffc5"
-version = "1.6.1+0"
+version = "1.6.4+0"
 
 [deps]
 JLLWrappers = "692b3bcd-3c85-4b1f-b108-f13ce0eb3210"
@@ -13,4 +13,4 @@ Artifacts = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
 JLLWrappers = "1.2.0"
 julia = "1.9"
 MbedTLS_jll = "~2.28.0"
-LibSSH2_jll = "1.10.1"
+LibSSH2_jll = "1.11.0"

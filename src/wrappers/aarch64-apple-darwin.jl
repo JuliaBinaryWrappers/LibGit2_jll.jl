@@ -2,13 +2,15 @@
 export libgit2
 
 using LibSSH2_jll
+using PCRE2_jll
+using Zlib_jll
 JLLWrappers.@generate_wrapper_header("LibGit2")
 JLLWrappers.@declare_library_product(libgit2, "@rpath/libgit2.1.9.dylib")
 function __init__()
-    JLLWrappers.@generate_init_header(LibSSH2_jll)
+    JLLWrappers.@generate_init_header(LibSSH2_jll, PCRE2_jll, Zlib_jll)
     JLLWrappers.@init_library_product(
         libgit2,
-        "lib/libgit2.1.9.0.dylib",
+        "lib/libgit2.1.9.1.dylib",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 

@@ -2,10 +2,12 @@
 export libgit2
 
 using LibSSH2_jll
+using PCRE2_jll
+using Zlib_jll
 JLLWrappers.@generate_wrapper_header("LibGit2")
 JLLWrappers.@declare_library_product(libgit2, "libgit2.dll")
 function __init__()
-    JLLWrappers.@generate_init_header(LibSSH2_jll)
+    JLLWrappers.@generate_init_header(LibSSH2_jll, PCRE2_jll, Zlib_jll)
     JLLWrappers.@init_library_product(
         libgit2,
         "bin\\libgit2.dll",
